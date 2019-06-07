@@ -3,7 +3,7 @@
 """
 Created on Wed May 29 12:38:02 2019
 
-@author:marlon
+@author: powers_marlon
 """
 
 # python3-simplejson python3-pytelegrambotapi
@@ -13,9 +13,12 @@ import sys
 import telebot
 
 
-bot = telebot.TeleBot("XXXXX")
+bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
 # grupo aviso
-idgrupo = "-XXX"
+idgrupo = "-325650074"
+# grupo teste
+# idgrupo = "-350862650"
+
 
 def celesc(url, municipio):
     pesquisa = {"munic": municipio}
