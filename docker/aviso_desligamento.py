@@ -57,7 +57,7 @@ def casan(url, municipio):
 
 
 # celesc_retorno = celesc("http://site.celesc.com.br/aplicativos/aviso_desligamento/index.php", "SAO JOSE")
-celesc_retorno = celesc("https://avisodesligamento.celesc.com.br", "SAO JOSE")
+celesc_retorno = celesc("https://avisodesligamento.celesc.com.br/index.php", "SAO JOSE")
 for iretorno in celesc_retorno:
     bot.send_message(idgrupo, "CELESC: "+iretorno)
 
