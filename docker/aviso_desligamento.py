@@ -9,7 +9,6 @@ Created on Wed May 29 12:38:02 2019
 # python3-simplejson python3-pytelegrambotapi
 import requests
 from bs4 import BeautifulSoup
-import sys
 import telebot
 
 
@@ -26,7 +25,6 @@ def celesc(url, municipio):
         resposta = requests.post(url, data=pesquisa)
     except Exception as erro:
         return erro
-        sys.exit(1)
     if resposta.status_code != 200:
         return ("Site com erro: ", resposta.status_code)
     else:
@@ -43,7 +41,6 @@ def casan(url, municipio):
         resposta = requests.get(url)
     except Exception as erro:
         print(erro)
-        sys.exit(1)
     if resposta.status_code != 200:
         return ("Site com erro: ", resposta.status_code)
     else:
