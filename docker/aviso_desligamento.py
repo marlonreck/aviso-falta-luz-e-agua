@@ -14,9 +14,9 @@ import telebot
 
 bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
 # grupo aviso
-# idgrupo = "-325650074"
+idgrupo = "-325650074"
 # grupo teste
-idgrupo = "-350862650"
+# idgrupo = "-350862650"
 
 
 def celesc(url, municipio):
