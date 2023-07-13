@@ -1,6 +1,12 @@
-FROM python:3.12.0a3-slim-bullseye
+FROM python:3.9.17-slim-bullseye
 
-WORKDIR /usr/src/app
+RUN groupadd -r aviso_app \
+    && useradd -g aviso_app aviso_app -d /home/app \
+    && mkdir /home/app \
+    && chown aviso_app:aviso_app /home/app
+
+USER aviso_app
+WORKDIR /home/app
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
