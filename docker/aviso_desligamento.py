@@ -3,11 +3,11 @@
 """
 Created on Wed May 29 12:38:02 2019
 
-@author: Marlon V. Reck
+@author: Marlon Reck
 e-mail: marlonreck@gmail.com
 Linkedin: https://br.linkedin.com/in/marlonreck
 
-Versão:1
+Versão:1.0.2
 Desdescription:
     Coleta avisos de falta de luz na celesc e falta de água na casan e envia 
     para o grupo do telegram
@@ -17,11 +17,18 @@ Requires: simplejson pyTelegramBotAPI beautifulsoup4
 
 # python3-simplejson python3-pytelegrambotapi python3-ujson
 import requests
+import warnings
 from bs4 import BeautifulSoup
+from bs4 import XMLParsedAsHTMLWarning
 import telebot
 
-bot = telebot.TeleBot("INCLUIR A CHAVE DO BOT AQUI")
-idgrupo = "INCLUIR O ID DO GRUPO DO TELEGRAM AQUI"
+warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
+bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
+# grupo aviso
+#idgrupo = "-325650074"
+# grupo teste
+idgrupo = "-350862650"
+# iduser =""
 
 def celesc(url, municipio):
     pesquisa = {"munic": municipio}
@@ -56,10 +63,19 @@ def casan(url, municipio):
     return lista
 
 celesc_retorno = celesc("https://avisodesligamento.celesc.com.br/index.php", "SAO JOSE")
-for iretorno in celesc_retorno:
-    bot.send_message(idgrupo, "CELESC: "+iretorno)
+if len(celesc_retorno) > 0:
+    for iretorno in celesc_retorno:
+        if len(iretorno) > 4095:
+            for iquebra in range(0, len(iretorno), 4095):
+                bot.reply_to(idgrupo, "CELESC: "+iretorno, text=iretorno[iquebra:iquebra+4095])
+        else:
+            bot.send_message(idgrupo, "CELESC: "+iretorno)
 
 casan_retornoSJ = casan("https://e.casan.com.br/avisos/rssfeed", "SÃO JOSÉ")
 if len(casan_retornoSJ) > 0:
     for isjretorno in casan_retornoSJ:
-        bot.send_message(idgrupo, isjretorno)
+        if len(isjretorno) > 4095:
+            for isjquebra in range(0, len(isjretorno), 4095):
+                bot.reply_to(idgrupo, "CELESC: "+isjretorno, text=isjretorno[isjquebra:isjquebra+4095])
+        else:
+            bot.send_message(idgrupo, isjretorno)
