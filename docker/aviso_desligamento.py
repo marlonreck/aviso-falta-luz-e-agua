@@ -23,12 +23,8 @@ from bs4 import XMLParsedAsHTMLWarning
 import telebot
 
 warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
-bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
-# grupo aviso
-#idgrupo = "-325650074"
-# grupo teste
-idgrupo = "-350862650"
-# iduser =""
+bot = telebot.TeleBot("CHAVE_DO_BOOT")
+idgrupo = "IDGRUPO_TELEGRAM"
 
 def celesc(url, municipio):
     pesquisa = {"munic": municipio}
