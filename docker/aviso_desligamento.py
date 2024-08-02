@@ -25,8 +25,8 @@ from bs4 import XMLParsedAsHTMLWarning
 import telebot
 
 warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
-bot = telebot.TeleBot("")
-IDGRUPO = ""
+bot = telebot.TeleBot("CHAVE_BOOT")
+IDGRUPO = "IDGRUPO_TELEGRAM"
 
 def celesc(url, municipio):
     "Pesquisa falta de luz por município"
