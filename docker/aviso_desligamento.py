@@ -25,12 +25,8 @@ from bs4 import XMLParsedAsHTMLWarning
 import telebot
 
 warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
-bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
-# grupo aviso
-IDGRUPO = "-325650074"
-# grupo teste
-#IDGRUPO = "-350862650"
-#iduser =""
+bot = telebot.TeleBot("")
+IDGRUPO = ""
 
 def celesc(url, municipio):
     "Pesquisa falta de luz por município"
@@ -43,7 +39,6 @@ def celesc(url, municipio):
         return ("Site com erro: ", resposta.status_code)
     soup = BeautifulSoup(resposta.text, "html.parser")
     tag = (soup.find('pre')).get_text()
-#    tag = (tag.split('Bairro :'))
     return tag.split('Bairro :')
 
 def casan(url, municipio):
