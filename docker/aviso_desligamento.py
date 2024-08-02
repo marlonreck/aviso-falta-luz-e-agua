@@ -13,20 +13,29 @@ Desdescription:
     coleta avisos de falta de água na casan por município e envia para um 
     grupo do telegram
 
-Requires: simplejson pyTelegramBotAPI beautifulsoup4
+Requires: simplejson pyTelegramBotAPI beautifulsoup4 dotenv
 """
 
-# python3-simplejson python3-ujson
+# python3-simplejson python3-ujson python3-dotenv.noarch
+import os
 import warnings
 import time
 import requests
 from bs4 import BeautifulSoup
 from bs4 import XMLParsedAsHTMLWarning
 import telebot
+from dotenv import load_dotenv
 
+load_dotenv(override=True)
+CHAVE_BOOT = os.getenv("CHAVE_BOOT")
+CHAVE_GRUPO = os.getenv("IDGRUPO_TELEGRAM")
 warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
-bot = telebot.TeleBot("CHAVE_BOOT")
-IDGRUPO = "IDGRUPO_TELEGRAM"
+bot = telebot.TeleBot(CHAVE_BOOT)
+# grupo aviso
+#IDGRUPO = CHAVE_GRUPO
+# grupo teste
+IDGRUPO = CHAVE_GRUPO
+#iduser =""
 
 def celesc(url, municipio):
     "Pesquisa falta de luz por município"
@@ -39,6 +48,7 @@ def celesc(url, municipio):
         return ("Site com erro: ", resposta.status_code)
     soup = BeautifulSoup(resposta.text, "html.parser")
     tag = (soup.find('pre')).get_text()
+#    tag = (tag.split('Bairro :'))
     return tag.split('Bairro :')
 
 def casan(url, municipio):
