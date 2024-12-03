@@ -13,35 +13,30 @@ Desdescription:
     coleta avisos de falta de água na casan por município e envia para um 
     grupo do telegram
 
-Requires: simplejson pyTelegramBotAPI beautifulsoup4 dotenv
+Requires: simplejson pyTelegramBotAPI beautifulsoup4
 """
 
-# python3-simplejson python3-ujson python3-dotenv.noarch
-import os
+# python3-simplejson python3-ujson
 import warnings
 import time
 import requests
 from bs4 import BeautifulSoup
 from bs4 import XMLParsedAsHTMLWarning
 import telebot
-from dotenv import load_dotenv
 
-load_dotenv(override=True)
-CHAVE_BOOT = os.getenv("CHAVE_BOOT")
-CHAVE_GRUPO = os.getenv("IDGRUPO_TELEGRAM")
 warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
-bot = telebot.TeleBot(CHAVE_BOOT)
+bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
 # grupo aviso
-#IDGRUPO = CHAVE_GRUPO
+IDGRUPO = "-325650074"
 # grupo teste
-IDGRUPO = CHAVE_GRUPO
+#IDGRUPO = "-350862650"
 #iduser =""
 
 def celesc(url, municipio):
     "Pesquisa falta de luz por município"
     pesquisa = {"munic": municipio}
     try:
-        resposta = requests.post(url, data=pesquisa, timeout=10)
+        resposta = requests.post(url, data=pesquisa, verify=False, timeout=10)
     except Exception as erro:
         print(erro)
     if resposta.status_code != 200:
@@ -56,7 +51,7 @@ def casan(url, municipio):
     i = 0
     lista = []
     try:
-        resposta = requests.get(url, timeout=10)
+        resposta = requests.get(url, verify=False, timeout=10)
     except Exception as erro:
         print(erro)
     if resposta.status_code != 200:
