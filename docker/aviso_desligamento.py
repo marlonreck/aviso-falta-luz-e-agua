@@ -10,7 +10,7 @@ Linkedin: https://br.linkedin.com/in/marlonreck
 Versão:1
 Desdescription:
     Coleta avisos de falta de luz na celesc por município e bairro,
-    coleta avisos de falta de água na casan por município e envia para um 
+    Coleta avisos de falta de água na casan por município e envia para um 
     grupo do telegram
 
 Requires: simplejson pyTelegramBotAPI beautifulsoup4
