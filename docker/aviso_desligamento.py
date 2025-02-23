@@ -25,12 +25,9 @@ from bs4 import XMLParsedAsHTMLWarning
 import telebot
 
 warnings.filterwarnings('ignore', category=XMLParsedAsHTMLWarning)
-bot = telebot.TeleBot("734308366:AAGW6Pw5PwHNjj0LIvtGDkGedPhDuFNSxA8")
+bot = telebot.TeleBot("CHAVETELEGRAM")
 # grupo aviso
-IDGRUPO = "-325650074"
-# grupo teste
-#IDGRUPO = "-350862650"
-#iduser =""
+IDGRUPO = "IDGRUPO"
 
 def celesc(url, municipio):
     "Pesquisa falta de luz por município"
