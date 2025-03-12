@@ -1,4 +1,4 @@
-FROM python:3.13.2-slim-bullseye
+FROM python:3.14-rc-slim-bookworm
 
 RUN groupadd -r aviso_app \
     && useradd -g aviso_app aviso_app -d /home/app \
